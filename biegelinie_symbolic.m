@@ -5,7 +5,8 @@ assume(F,"positive")
 a= l/2;
 
 
-x = 0:0.1*l:l;
+% x = 0:0.1*l:l;
+syms x
 
 
 Az = -F/l*a;
@@ -25,6 +26,7 @@ C1_RB = solve(w(end), C1);
 w1 = subs(w1, C1, C1_RB);
 w = subs(w, C1, C1_RB);
 %% Substitution of symbolic variables
+x_num = 0:0.1*l:l;
 vec_sym = [F, l, EI];
 vec_num = [1, 2, 1];
 
@@ -32,13 +34,13 @@ vec_num = [1, 2, 1];
 %%
 figure
 subplot(411)
-plot(subs(Q, vec_sym, vec_num))
+fplot(subs(Q, vec_sym, vec_num))
 
 subplot(412)
-plot(subs(M, vec_sym, vec_num))
+fplot(subs(M, vec_sym, vec_num))
 
 subplot(413)
-plot(subs(w1, vec_sym, vec_num))
+fplot(subs(w1, vec_sym, vec_num))
 
 subplot(414)
-plot(subs(w, vec_sym, vec_num))
+fplot(subs(w, vec_sym, vec_num))
